@@ -1,16 +1,22 @@
-a {
+@import "tailwindcss";
+
+a:not(.nolink) {
   color: darkcyan !important;
   position: relative;
 }
 
-a::after {
+a:not(.nolink)::after {
   content: "";
-  width: 100%;
+  width: 0;
   height: .2rem;
   background-color: darkcyan;
   position: absolute;
   bottom: -.15rem;
   left: 50%;
   transform: translateX(-50%);
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
+}
+
+a:not(.nolink):hover::after {
+  width: 100%;
 }
