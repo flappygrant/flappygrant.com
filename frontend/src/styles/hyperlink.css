@@ -1,0 +1,20 @@
+a:not(.nolink) {
+  color: var(--fore-call) !important;
+  position: relative;
+}
+
+a:not(.nolink)::after {
+  content: "";
+  width: 0;
+  height: .2rem;
+  background-color: var(--fore-call);
+  position: absolute;
+  bottom: -.15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width .3s ease;
+}
+
+a:not(.nolink):hover::after {
+  width: 100%;
+}

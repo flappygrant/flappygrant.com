@@ -1,22 +1,13 @@
 @import "tailwindcss";
+@import "./theme.css";
+@import "./hyperlink.css";
 
-a:not(.nolink) {
-  color: darkcyan !important;
-  position: relative;
+* {
+  box-sizing: border-box;
 }
 
-a:not(.nolink)::after {
-  content: "";
-  width: 0;
-  height: .2rem;
-  background-color: darkcyan;
-  position: absolute;
-  bottom: -.15rem;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width .3s ease;
-}
-
-a:not(.nolink):hover::after {
-  width: 100%;
+html,
+body {
+  background-color: var(--back-1);
+  color: var(--fore-1);
 }
