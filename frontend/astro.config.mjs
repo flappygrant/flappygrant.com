@@ -11,5 +11,13 @@ export default defineConfig({
         plugins: [
             tailwindcss(),
         ],
+        server: {
+            proxy: {
+                "/api": {
+                    target: "https://www.flappygrant.com",
+                    changeOrigin: true,
+                },
+            },
+        },
     },
 })
