@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gameContainer) {
         async function applyJavaScript() {
             try {
-                const resp = await fetch(`https://api.flappygrant.com/game/${gameId}.js`)
+                const resp = await fetch(`https://api.flappygrant.com/${gameId}.js`)
                 if (!resp.ok) throw new Error()
                 const script = document.createElement("script")
                 script.textContent = await resp.text()
