@@ -4,7 +4,7 @@
 
   --fore-1: #f8f8f8;
   --fore-2: #e2e2e2;
-  --fore-muted: #c2c2c2;
+  --fore-muted: #626262;
   --fore-call: darkcyan;
 }
 
@@ -15,4 +15,5 @@
   --color-fore-1: var(--fore-1);
   --color-fore-2: var(--fore-2);
   --color-fore-muted: var(--fore-muted);
+  --color-fore-call: var(--fore-call);
 }
