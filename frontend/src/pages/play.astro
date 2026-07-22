@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import * as config from "../config";
+---
+
+<MainLayout>
+    <main
+        class="flex items-center justify-center mt-12 w-full h-[calc(100vh-3rem)]"
+    >
+        <noscript>
+            <div
+                class="px-10 max-w-[500px] w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute"
+            >
+                <h1>
+                    All {config.TITLE} games require JavaScript to function!
+                </h1>
+            </div>
+        </noscript>
+        <div
+            id="game-container"
+            class="aspect-video bg-black w-[min(100vw,calc((100vh-3rem)*1.777777))] relative"
+        >
+            <canvas id="game-view" class="w-full h-full absolute"></canvas>
+            <div
+                id="game-options"
+                class="flex items-center gap-2 bottom-2 right-2 absolute"
+            >
+            </div>
+        </div>
+    </main>
+    <script src="../script/play"></script>
+</MainLayout>
