@@ -23,12 +23,11 @@ jobs:
           node-version: 22
 
       - uses: oven-sh/setup-bun@v2
-      - run: cd frontend
-      - run: bun i
-      - run: bun run build
+      - run: cd frontend && bun i
+      - run: cd frontend && bun run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: frontend/dist
 
   deploy:
     needs: build
