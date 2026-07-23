@@ -5,6 +5,7 @@ import com.flappygrant.backcore.BackcorePlugin;
 public class GameManifest {
     private String title;
     private String description;
+    private String source;
 
     public String title() {
         return title;
@@ -12,6 +13,10 @@ public class GameManifest {
 
     public String description() {
         return description;
+    }
+
+    public String source() {
+        return source;
     }
 
     @Override

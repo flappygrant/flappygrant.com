@@ -1,3 +1,6 @@
+import { manifestOf } from "./manifest"
+import { popup, PopupType } from "./popup"
+
 const query = new URLSearchParams(window.location.search)
 let gameId = query.get("g") ?? ""
 if (gameId.trim() == "") window.location.replace("/index.html")
@@ -7,13 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gameContainer) {
         async function applyJavaScript() {
             try {
-                const resp = await fetch(`https://api.flappygrant.com/${gameId}.js`)
-                if (!resp.ok) throw new Error()
+                const manifest = await manifestOf(gameId)
+                if (typeof manifest == "string") throw new Error("Failed to retrieve game data!")
+
+                const response = await fetch(manifest.source)
+                if (!response.ok) throw new Error("Game source likely does not exist!")
+
                 const script = document.createElement("script")
-                script.textContent = await resp.text()
+                script.textContent = await response.text()
                 gameContainer!.appendChild(script)
-            } catch {
-                window.location.replace("/index.html")
+            } catch (ex) {
+                popup(PopupType.ERROR, (ex as Error).message)
             }
         }
 

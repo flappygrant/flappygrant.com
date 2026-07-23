@@ -1,6 +1,8 @@
 package com.flappygrant.backcore;
 
+import com.flappygrant.backcore.route.RouteGameManifest;
 import com.flappygrant.backcore.route.RoutePlayRedirects;
+import com.flappygrant.backcore.util.GameManifests;
 import com.google.gson.Gson;
 import com.pghserver.api.PghAPI;
 import com.pghserver.api.PghLogger;
@@ -11,7 +13,9 @@ public class BackcorePlugin implements PghPlugin {
 
     @Override
     public void onEnable(PghAPI server, PghLogger logger) {
-        server.route("/.*", new RoutePlayRedirects(server));
+        GameManifests.reload(server, logger);
+        server.route("/.*", new RoutePlayRedirects());
+        server.route("/[^/]+\\.json", new RouteGameManifest());
     }
 
     @Override
